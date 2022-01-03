@@ -9,6 +9,8 @@ function generatePassword() {
   let specialChars = `!"#$%&'()*+,-./:;<=>?@[\]^_\`{|}~`;
   let charsToInclude = "";
 
+  let passwordValue = "";
+
   let passwordLength;
   let includeLowerCase = false;
   let includeUpperCase = false;
@@ -37,6 +39,22 @@ function generatePassword() {
   includeSpecialCharacters = confirm(
     "Do you want to include special characters"
   );
+
+  if (includeLowerCase) {
+    charsToInclude += lowerChars;
+  }
+
+  if (includeUpperCase) {
+    charsToInclude += upperChars;
+  }
+
+  if (includeNumeric) {
+    charsToInclude += numberChars;
+  }
+
+  if (includeSpecialCharacters) {
+    charsToInclude += specialChars;
+  }
 }
 
 // Write password to the #password input
