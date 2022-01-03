@@ -1,6 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// this function is to randomly pick the variables, but also ensure that at least 1 variable is selected
+function randomPickChar(text, numberChars = 1) {
+  let randomString = "";
+
+  for (let i = 0; i < numberChars; i++) {
+    randomString += text.charAt(Math.floor(Math.random() * text.length));
+  }
+
+  return randomString;
+}
+
 function generatePassword() {
   //using let instead of var to ensure that the variables remain within the function and are not global
   let numberChars = "0123456789";
@@ -39,22 +50,32 @@ function generatePassword() {
   includeSpecialCharacters = confirm(
     "Do you want to include special characters"
   );
-
+  // using the function random picker to ensure the values are randonly picked
+  // +=  is a concatenation,
   if (includeLowerCase) {
     charsToInclude += lowerChars;
+    passwordValue += randomPickChar(lowerChars);
   }
 
   if (includeUpperCase) {
     charsToInclude += upperChars;
+    passwordValue += randomPickChar(upperChars);
   }
 
   if (includeNumeric) {
     charsToInclude += numberChars;
+    passwordValue += randomPickChar(numberChars);
   }
 
   if (includeSpecialCharacters) {
     charsToInclude += specialChars;
+    passwordValue += randomPickChar(specialChars);
   }
+  // the password lenth
+  passwordValue += randomPickChar(
+    charsToInclude,
+    passwordLength - passwordValue.length
+  );
 }
 
 // Write password to the #password input
