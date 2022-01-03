@@ -15,7 +15,7 @@ function randomPickChar(text, numberChars = 1) {
 function generatePassword() {
   //using let instead of var to ensure that the variables remain within the function and are not global
   let numberChars = "0123456789";
-  let UpperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let lowerChars = "abcdefghijklmnopqrstuvwxyz";
   let specialChars = `!"#$%&'()*+,-./:;<=>?@[\]^_\`{|}~`;
   let charsToInclude = "";
@@ -76,6 +76,11 @@ function generatePassword() {
     charsToInclude,
     passwordLength - passwordValue.length
   );
+  // noticed that gerenated password followed the variable listing, scrambling this to generate a stronger password
+
+  passwordValue = randomPickChar(passwordValue, passwordValue.length);
+
+  return passwordValue;
 }
 
 // Write password to the #password input
