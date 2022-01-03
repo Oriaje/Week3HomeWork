@@ -2,6 +2,19 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
+  //using let instead of var to ensure that the variables remain within the function and are not global
+  let numberChars = "0123456789";
+  let UpperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let lowerChars = "abcdefghijklmnopqrstuvwxyz";
+  let specialChars = `!"#$%&'()*+,-./:;<=>?@[\]^_\`{|}~`;
+  let charsToInclude = "";
+
+  let passwordLength;
+  let includeLowerCase = false;
+  let includeUpperCase = false;
+  let includeNumeric = false;
+  let includeSpecialCharacters = false;
+
   let passwordlength;
   //get password length
   //using parseInt to change string to value, as prompt returns a string
